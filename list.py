@@ -170,20 +170,19 @@ def swap(uno_list: list[int], index: int) -> list[int]:
         list[int]: list of integers with elements and index and index+1 swapped
     """
 
-    # Error Handling
-
-    last_index = len(uno_list) - 1
+    # Error Handling  
+    
     if not isinstance(index, int):
-        print("The index must be of type integer")
-        return
-
+        raise TypeError("The index must be of type integer")
+    
+    last_index = len(uno_list) - 1
     if index >= last_index or index < 0:
 
         error_message = "The chosen index must be greater than or equal to 0 \n"
         error_message += f"or smaller than the last index {last_index} of the list\n"
         error_message += f"Your index {index} is out of bounds"
-        print(error_message)
-        return
+        
+        raise IndexError(error_message)
 
     first_index = index
     first_value = uno_list[index]
