@@ -43,7 +43,7 @@ def recursive_reordering(uno_list: list[int]) -> list[int]:
         else:
             return swap(uno_list,0)
     
-    # identifying largest and smallest values and the respective indices
+    # identifying index of largest and smallest values.
     largest_index = largest_number(uno_list)
     smallest_index = smallest_number(uno_list)
     last_index = len(uno_list) - 1
