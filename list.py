@@ -8,7 +8,7 @@ def main():
 
 
 def recursive_reordering(unordered_list: list[int]) -> list[int]:
-    """Order the list with the minimun number of swaps of adjacent elements:
+    """Order the list with the minimum number of swaps of adjacent elements:
 
     Explanation: Swapping the largest and shortest numbers to the beginning
     and ending does not affect the relative order of the residual numbers.
@@ -18,7 +18,7 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
 
 
     If the elements in the list are not unique then the smallest index for the smallest number
-    , which is closest to the beginning, is chosen and and vice versa
+    , which is closest to the beginning, is chosen and vice versa
     for the largest number closest to the end. This guarantees that the algorithm
     also uses the minimum amount of swaps for lists with duplicates.
 
@@ -79,11 +79,8 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
 def largest_number(unordered_list: list[int]) -> int:
     """Return index and value of largest number in list
 
-    Args:
-        unordered_list (list[int]): unordered list of integers
-
     Returns:
-        tuple (int): index of the largest number in the list
+        int: index of the largest number in the list
     """
     largest_number = unordered_list[0]
     largest_number_index = 0
@@ -99,7 +96,7 @@ def largest_number(unordered_list: list[int]) -> int:
 
 
 def smallest_number(unordered_list: list[int]) -> int:
-    """Return index and value of smalles number in list
+    """Return index and value of smallest number in list
 
     Args:
         unordered_list (list[int]): unordered list of integers
@@ -139,11 +136,8 @@ def ordered(unordered_list: list[int], index: int) -> bool:
 
     last_index = len(unordered_list) - 1
     if index >= last_index or index < 0:
-        error_message = (
-            "The chosen index must be greater than or equal to 0\n"
-            f"and smaller than the last index {last_index} of the list.\n"
-            f"Your index {index} is out of bounds."
-        )
+        error_message = f"Your index {index} is out of bounds."
+            
         raise IndexError(error_message)
 
     # Ordering adjacent values
@@ -180,9 +174,7 @@ def swap(unordered_list: list[int], index: int) -> list[int]:
     last_index = len(unordered_list) - 1
     if index >= last_index or index < 0:
 
-        error_message = "The chosen index must be greater than or equal to 0 \n"
-        error_message += f"or smaller than the last index {last_index} of the list\n"
-        error_message += f"Your index {index} is out of bounds"
+        error_message = f"Your index {index} is out of bounds."
 
         raise IndexError(error_message)
 
