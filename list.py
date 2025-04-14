@@ -22,9 +22,6 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
     for the largest number closest to the end. This guarantees that the algorithm
     also uses the minimum amount of swaps for lists with duplicates.
 
-    Args:
-        unordered_list (list[int]): unordered list of integers
-
     Returns:
         list[int]: ordered list of integers.
     """
@@ -78,9 +75,6 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
 
 def largest_number(unordered_list: list[int]) -> int:
     """Return index and value of largest number in list
-
-    Returns:
-        int: index of the largest number in the list
     """
     largest_number = unordered_list[0]
     largest_number_index = 0
@@ -97,12 +91,6 @@ def largest_number(unordered_list: list[int]) -> int:
 
 def smallest_number(unordered_list: list[int]) -> int:
     """Return index and value of smallest number in list
-
-    Args:
-        unordered_list (list[int]): unordered list of integers
-
-    Returns:
-        tuple[int]: index of the smallest number in the list
     """
 
     smallest_number = unordered_list[0]
@@ -121,12 +109,8 @@ def smallest_number(unordered_list: list[int]) -> int:
 def ordered(unordered_list: list[int], index: int) -> bool:
     """Determine, whether adjacent numbers are ordered correctly
 
-    Args:
-        unordered_list (list[int]): unordered list of numbers
-        index (int): first index of adjacent indices to be ordered
-
     Returns:
-        bool: True, ordered, False if unordered.
+        bool: True, if adjacent numbers are ordered, else False.
     """
 
     # Error Handling
@@ -158,12 +142,8 @@ def swap(unordered_list: list[int], index: int) -> list[int]:
         Swap the elements in the list positioned at the index with the
         element at the next index
 
-    Args:
-        unordered_list (list[int]): list of integers
-        index (int): index of the first integer
-
     Returns:
-        list[int]: list of integers with elements and index and index+1 swapped
+        list[int]: list of integers with elements at index and index+1 swapped
     """
 
     # Error Handling
