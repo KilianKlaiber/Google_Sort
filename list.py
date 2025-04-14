@@ -74,7 +74,7 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
 
 
 def largest_number(unordered_list: list[int]) -> int:
-    """Return index and value of largest number in list
+    """Return index of largest number in list
     """
     largest_number = unordered_list[0]
     largest_number_index = 0
@@ -90,7 +90,7 @@ def largest_number(unordered_list: list[int]) -> int:
 
 
 def smallest_number(unordered_list: list[int]) -> int:
-    """Return index and value of smallest number in list
+    """Return index of smallest number in list
     """
 
     smallest_number = unordered_list[0]
@@ -138,9 +138,7 @@ def ordered(unordered_list: list[int], index: int) -> bool:
 
 
 def swap(unordered_list: list[int], index: int) -> list[int]:
-    """Swap Elements
-        Swap the elements in the list positioned at the index with the
-        element at the next index
+    """Swap adjacent Elements
 
     Returns:
         list[int]: list of integers with elements at index and index+1 swapped
