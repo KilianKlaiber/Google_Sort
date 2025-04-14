@@ -1,13 +1,13 @@
 def main():
 
-    uno_list = [2, 7, 3, 8, 7, 7, 5, 2, 1, 4, 5, 4, 3, 5, 6, 8]
+    unordered_list = [2, 7, 3, 8, 7, 7, 5, 2, 1, 4, 5, 4, 3, 5, 6, 8]
 
-    ord_list = recursive_reordering(uno_list)
+    ordered_list = recursive_reordering(unordered_list)
 
-    print("ordered list", ord_list)
+    print("ordered list", ordered_list)
 
 
-def recursive_reordering(uno_list: list[int]) -> list[int]:
+def recursive_reordering(unordered_list: list[int]) -> list[int]:
     """Order the list with the minimun number of swaps of adjacent elements:
 
     Explanation: Swapping the largest and shortest numbers to the beginning
@@ -23,109 +23,109 @@ def recursive_reordering(uno_list: list[int]) -> list[int]:
     also uses the minimum amount of swaps for lists with duplicates.
 
     Args:
-        uno_list (list[int]): unordered list of integers
+        unordered_list (list[int]): unordered list of integers
 
     Returns:
         list[int]: ordered list of integers.
     """
-    print("uno_list", uno_list)
+    print("unordered_list", unordered_list)
 
     # Exit conditions for recursion
 
-    if len(uno_list) <= 1:
-        return uno_list
+    if len(unordered_list) <= 1:
+        return unordered_list
 
-    if len(uno_list) == 2:
-        if ordered(uno_list, 0):
-            return uno_list
+    if len(unordered_list) == 2:
+        if ordered(unordered_list, 0):
+            return unordered_list
         else:
-            return swap(uno_list, 0)
+            return swap(unordered_list, 0)
 
     # identifying index of largest and smallest values.
-    largest_index = largest_number(uno_list)
-    smallest_index = smallest_number(uno_list)
-    last_index = len(uno_list) - 1
-    smallest_distance = smallest_index
-    largest_distance = last_index - largest_index
+    largest_number_index = largest_number(unordered_list)
+    smallest_number_index = smallest_number(unordered_list)
+    last_index = len(unordered_list) - 1
+    smallest_number_distance = smallest_number_index
+    largest_number_distance = last_index - largest_number_index
 
-    if smallest_distance <= largest_distance:
+    if smallest_number_distance <= largest_number_distance:
         # move the smallest number to the beginning of the list
         # by swapping consecutive numbers
-        for index in range(smallest_distance - 1, -1, -1):
-            uno_list = swap(uno_list, index)
+        for index in range(smallest_number_distance - 1, -1, -1):
+            unordered_list = swap(unordered_list, index)
 
         # Remove the first element from the list, which is ordered and
         # Recursively order the rest of the list.
         # Add the first element to the returned ordered rest list.
-        if len(uno_list) >= 2:
-            unobeginning = [uno_list[0]]
-            return unobeginning + recursive_reordering(uno_list[1:])
+        if len(unordered_list) >= 2:
+            first_ordered_index = [unordered_list[0]]
+            return first_ordered_index + recursive_reordering(unordered_list[1:])
         else:
-            return uno_list
+            return unordered_list
 
     else:
-        for index in range(largest_index, last_index):
-            uno_list = swap(uno_list, index)
+        for index in range(largest_number_index, last_index):
+            unordered_list = swap(unordered_list, index)
 
-        unoending = [uno_list[-1]]
-        unoslice = uno_list[:last_index]
+        last_ordered_index = [unordered_list[-1]]
+        unordered_list_without_last_index = unordered_list[:last_index]
 
-        if len(uno_list) >= 2:
-            return recursive_reordering(unoslice) + unoending
+        if len(unordered_list) >= 2:
+            return recursive_reordering(unordered_list_without_last_index) + last_ordered_index
         else:
-            return uno_list
+            return unordered_list
 
 
-def largest_number(uno_list: list[int]) -> int:
+def largest_number(unordered_list: list[int]) -> int:
     """Return index and value of largest number in list
 
     Args:
-        uno_list (list[int]): unordered list of integers
+        unordered_list (list[int]): unordered list of integers
 
     Returns:
         tuple (int): index of the largest number in the list
     """
-    largest_value = uno_list[0]
-    largest_index = 0
+    largest_number = unordered_list[0]
+    largest_number_index = 0
 
-    for index, value in enumerate(uno_list):
+    for index, value in enumerate(unordered_list):
         # The >= makes sure that the largest index for the largest value is returned
         # in case the largest value occurs several times.
-        if value >= largest_value:
-            largest_value = value
-            largest_index = index
+        if value >= largest_number:
+            largest_number = value
+            largest_number_index = index
 
-    return largest_index
+    return largest_number_index
 
 
-def smallest_number(uno_list: list[int]) -> int:
+def smallest_number(unordered_list: list[int]) -> int:
     """Return index and value of smalles number in list
 
     Args:
-        uno_list (list[int]): unordered list of integers
+        unordered_list (list[int]): unordered list of integers
 
     Returns:
         tuple[int]: index of the smallest number in the list
     """
 
-    smallest_value = uno_list[0]
-    smallest_index = 0
+    smallest_number = unordered_list[0]
+    smallest_number_index = 0
 
-    for index, value in enumerate(uno_list):
+    for index, value in enumerate(unordered_list):
         # The smaller sign < guarantees that the smallest index is chosen,
         # even if the smallest value occurs several times.
-        if value < smallest_value:
-            smallest_value = value
-            smallest_index = index
+        if value < smallest_number:
+            smallest_number = value
+            smallest_number_index = index
 
-    return smallest_index
+    return smallest_number_index
 
 
-def ordered(uno_list: list[int], index: int) -> bool:
+def ordered(unordered_list: list[int], index: int) -> bool:
     """Determine, whether adjacent numbers are ordered correctly
 
     Args:
-        uno_list (list[int]): unordered list of numbers
+        unordered_list (list[int]): unordered list of numbers
         index (int): first index of adjacent indices to be ordered
 
     Returns:
@@ -137,7 +137,7 @@ def ordered(uno_list: list[int], index: int) -> bool:
     if not isinstance(index, int):
         raise TypeError("The index must be of type integer")
 
-    last_index = len(uno_list) - 1
+    last_index = len(unordered_list) - 1
     if index >= last_index or index < 0:
         error_message = (
             "The chosen index must be greater than or equal to 0\n"
@@ -149,9 +149,9 @@ def ordered(uno_list: list[int], index: int) -> bool:
     # Ordering adjacent values
 
     first_index = index
-    first_value = uno_list[first_index]
+    first_value = unordered_list[first_index]
     second_index = index + 1
-    second_value = uno_list[second_index]
+    second_value = unordered_list[second_index]
 
     if second_value >= first_value:
         return True
@@ -159,13 +159,13 @@ def ordered(uno_list: list[int], index: int) -> bool:
         return False
 
 
-def swap(uno_list: list[int], index: int) -> list[int]:
+def swap(unordered_list: list[int], index: int) -> list[int]:
     """Swap Elements
         Swap the elements in the list positioned at the index with the
         element at the next index
 
     Args:
-        uno_list (list[int]): list of integers
+        unordered_list (list[int]): list of integers
         index (int): index of the first integer
 
     Returns:
@@ -177,7 +177,7 @@ def swap(uno_list: list[int], index: int) -> list[int]:
     if not isinstance(index, int):
         raise TypeError("The index must be of type integer")
 
-    last_index = len(uno_list) - 1
+    last_index = len(unordered_list) - 1
     if index >= last_index or index < 0:
 
         error_message = "The chosen index must be greater than or equal to 0 \n"
@@ -189,14 +189,14 @@ def swap(uno_list: list[int], index: int) -> list[int]:
     # Swapping adjacent values:
 
     first_index = index
-    first_value = uno_list[index]
+    first_value = unordered_list[index]
     second_index = index + 1
-    second_value = uno_list[second_index]
+    second_value = unordered_list[second_index]
 
-    uno_list[first_index] = second_value
-    uno_list[second_index] = first_value
+    unordered_list[first_index] = second_value
+    unordered_list[second_index] = first_value
 
-    return uno_list
+    return unordered_list
 
 
 if __name__ == "__main__":
