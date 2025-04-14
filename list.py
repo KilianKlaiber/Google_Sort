@@ -113,7 +113,7 @@ def smallest_number(uno_list: list[int]) -> int:
 
     for index, value in enumerate(uno_list):
         # The smaller sign < guarantees that the smallest index is chosen,
-        # even if the smallest value occurs several tims.
+        # even if the smallest value occurs several times.
         if value < smallest_value:
             smallest_value = value
             smallest_index = index
@@ -146,6 +146,8 @@ def ordered(uno_list: list[int], index: int) -> bool:
         )
         raise IndexError(error_message)
 
+    # Ordering adjacent values
+
     first_index = index
     first_value = uno_list[first_index]
     second_index = index + 1
@@ -170,19 +172,21 @@ def swap(uno_list: list[int], index: int) -> list[int]:
         list[int]: list of integers with elements and index and index+1 swapped
     """
 
-    # Error Handling  
-    
+    # Error Handling
+
     if not isinstance(index, int):
         raise TypeError("The index must be of type integer")
-    
+
     last_index = len(uno_list) - 1
     if index >= last_index or index < 0:
 
         error_message = "The chosen index must be greater than or equal to 0 \n"
         error_message += f"or smaller than the last index {last_index} of the list\n"
         error_message += f"Your index {index} is out of bounds"
-        
+
         raise IndexError(error_message)
+
+    # Swapping adjacent values:
 
     first_index = index
     first_value = uno_list[index]
