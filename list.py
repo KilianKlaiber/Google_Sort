@@ -12,22 +12,11 @@ def main():
 def recursive_reordering(uno_list: list[int]) -> list[int]:
     """Order the list with the minimun number of swaps of adjacent elements:
     
-    Find the largest and smallest number in the list
-    Find the distance of the smallest number to the beginning
-    and the distance of the largest number to the end of the list
-    Chose to swap the smallest number to the beginning, 
-    if its distance is the smallest. Otherwise swap the larget number
-    to the end of the list. Detach the smallest number from the
-    beginning or the largest number from the end of the list.
-    Recursively perform the swap on the rest of the list and 
-    add the result together with the beginng or end.
-    This algorithm orders the list with the minimum number of swaps.
-    
     Explanation: Swapping the largest and shortest numbers to the beginning
     and ending does not affect the relative order of the residual numbers.
     Each swap is necessary, in order to bring the largest and smallest numbers
-    to their final position. Since I never perform an unnecessary swap,
-    I reach the order with the least number of swaps.
+    to their final position. Since the algorithm never perform an unnecessary swap,
+    it reaches the final solution with the least number of swaps.
     
     
     If the elements in the list are not unique then the smallest index for the smallest number
@@ -55,11 +44,11 @@ def recursive_reordering(uno_list: list[int]) -> list[int]:
             return swap(uno_list,0)
     
     # identifying largest and smallest values and the respective indices
-    largest_tuple = largest_number(uno_list)
-    smallest_tuple = smallest_number(uno_list)
+    largest_index = largest_number(uno_list)
+    smallest_index = smallest_number(uno_list)
     last_index = len(uno_list) - 1
-    smallest_distance = smallest_tuple[0]
-    largest_distance = last_index - largest_tuple[0]
+    smallest_distance = smallest_index
+    largest_distance = last_index - largest_index
     
     if smallest_distance <= largest_distance:
         # move the smallest number to the beginning of the list
@@ -77,7 +66,7 @@ def recursive_reordering(uno_list: list[int]) -> list[int]:
             return uno_list
         
     else:
-        for index in range(largest_tuple[0], last_index):
+        for index in range(largest_index, last_index):
             uno_list = swap(uno_list, index)
             
         unoending = [uno_list[-1]]
@@ -90,14 +79,14 @@ def recursive_reordering(uno_list: list[int]) -> list[int]:
 
 
 
-def largest_number(uno_list: list[int]) -> tuple[int, int]:
+def largest_number(uno_list: list[int]) -> int:
     """Return index and value of largest number in list
 
     Args:
         uno_list (list[int]): unordered list of integers
 
     Returns:
-        tuple[int, int]: (index, value) of the largest number in the list
+        tuple (int): index of the largest number in the list
     """
     largest_value = uno_list[0]
     largest_index = 0
@@ -109,9 +98,9 @@ def largest_number(uno_list: list[int]) -> tuple[int, int]:
             largest_value = value
             largest_index = index
     
-    return(largest_index, largest_value)
+    return largest_index
 
-def smallest_number(uno_list: list[int]) -> tuple[int, int]:
+def smallest_number(uno_list: list[int]) -> int:
     
     """Return index and value of smalles number in list
 
@@ -119,7 +108,7 @@ def smallest_number(uno_list: list[int]) -> tuple[int, int]:
         uno_list (list[int]): unordered list of integers
 
     Returns:
-        tuple[int, int]: (index, value) of the smallest number in the list
+        tuple[int]: index of the smallest number in the list
     """
     
     
@@ -133,7 +122,7 @@ def smallest_number(uno_list: list[int]) -> tuple[int, int]:
             smallest_value = value
             smallest_index = index
     
-    return(smallest_index, smallest_value)
+    return smallest_index
 
 def ordered(uno_list: list[int], index: int) -> bool:
     """Determine, whether adjacent numbers are ordered correctly
