@@ -38,7 +38,6 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
         else:
             return swap(unordered_list, 0)
 
-    # identifying index of largest and smallest values.
     largest_number_index = largest_number(unordered_list)
     smallest_number_index = smallest_number(unordered_list)
     last_index = len(unordered_list) - 1
@@ -46,14 +45,8 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
     largest_number_distance = last_index - largest_number_index
 
     if smallest_number_distance <= largest_number_distance:
-        # move the smallest number to the beginning of the list
-        # by swapping consecutive numbers
         for index in range(smallest_number_distance - 1, -1, -1):
             unordered_list = swap(unordered_list, index)
-
-        # Remove the first element from the list, which is ordered and
-        # Recursively order the rest of the list.
-        # Add the first element to the returned ordered rest list.
         if len(unordered_list) >= 2:
             first_ordered_index = [unordered_list[0]]
             return first_ordered_index + recursive_reordering(unordered_list[1:])
@@ -63,25 +56,24 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
     else:
         for index in range(largest_number_index, last_index):
             unordered_list = swap(unordered_list, index)
-
         last_ordered_index = [unordered_list[-1]]
         unordered_list_without_last_index = unordered_list[:last_index]
-
         if len(unordered_list) >= 2:
-            return recursive_reordering(unordered_list_without_last_index) + last_ordered_index
+            return (
+                recursive_reordering(unordered_list_without_last_index)
+                + last_ordered_index
+            )
         else:
             return unordered_list
 
 
 def largest_number(unordered_list: list[int]) -> int:
-    """Return index of largest number in list
-    """
+    """Return index of largest number in list"""
     largest_number = unordered_list[0]
     largest_number_index = 0
 
     for index, value in enumerate(unordered_list):
-        # The >= makes sure that the largest index for the largest value is returned
-        # in case the largest value occurs several times.
+        # >= instead of > in order to get the last index, if the largest_number is not unique
         if value >= largest_number:
             largest_number = value
             largest_number_index = index
@@ -90,15 +82,13 @@ def largest_number(unordered_list: list[int]) -> int:
 
 
 def smallest_number(unordered_list: list[int]) -> int:
-    """Return index of smallest number in list
-    """
+    """Return index of smallest number in list"""
 
     smallest_number = unordered_list[0]
     smallest_number_index = 0
 
     for index, value in enumerate(unordered_list):
-        # The smaller sign < guarantees that the smallest index is chosen,
-        # even if the smallest value occurs several times.
+        # < instead of <= in order to get the first index, if the smallest_number is not unique
         if value < smallest_number:
             smallest_number = value
             smallest_number_index = index
@@ -121,7 +111,7 @@ def ordered(unordered_list: list[int], index: int) -> bool:
     last_index = len(unordered_list) - 1
     if index >= last_index or index < 0:
         error_message = f"Your index {index} is out of bounds."
-            
+
         raise IndexError(error_message)
 
     # Ordering adjacent values
