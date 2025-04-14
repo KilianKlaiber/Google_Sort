@@ -133,18 +133,18 @@ def ordered(uno_list: list[int], index: int) -> bool:
     """
 
     # Error Handling
-    last_index = len(uno_list) - 1
+
     if not isinstance(index, int):
-        print("The index must be of type integer")
-        return
+        raise TypeError("The index must be of type integer")
 
+    last_index = len(uno_list) - 1
     if index >= last_index or index < 0:
-
-        error_message = "The chosen index must be greater than or equal to 0 \n"
-        error_message += f"or smaller than the last index {last_index} of the list\n"
-        error_message += f"Your index {index} is out of bounds"
-        print(error_message)
-        return
+        error_message = (
+            "The chosen index must be greater than or equal to 0\n"
+            f"and smaller than the last index {last_index} of the list.\n"
+            f"Your index {index} is out of bounds."
+        )
+        raise IndexError(error_message)
 
     first_index = index
     first_value = uno_list[first_index]
