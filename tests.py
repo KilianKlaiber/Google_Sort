@@ -1,5 +1,5 @@
 import pytest
-from list import swap, ordered, smallest_number, largest_number, recursive_reordering
+from main import swap, ordered, smallest_number, largest_number, recursive_reordering
 
 # Testing swap
 
