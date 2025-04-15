@@ -56,19 +56,19 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
             unordered_list = swap(unordered_list, index)
 
         if len(unordered_list) >= 2:
-            # Recursively order the remaining list without the first element
+            # Recursively order the remaining list without the first element.
             return [unordered_list[0]] + recursive_reordering(unordered_list[1:])
         else:
             return unordered_list
 
     else:
-        # Move the largest number to the end of the list
+        # Move the largest number to the end of the list.
         for index in range(largest_number_index, last_index):
             unordered_list = swap(unordered_list, index)
 
         if len(unordered_list) >= 2:
 
-            # Recursively order the remaining list without the last
+            # Recursively order the remaining list without the last element.
             return recursive_reordering(unordered_list[:-1]) + [unordered_list[-1]]
         else:
             return unordered_list
