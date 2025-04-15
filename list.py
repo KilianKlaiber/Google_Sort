@@ -13,6 +13,8 @@ for the largest number closest to the end. This guarantees that the algorithm
 also uses the minimum amount of swaps for lists with duplicates.
 """
 
+from typing import Any
+
 
 def main():
     """Execute recursive ordering function"""
@@ -161,13 +163,13 @@ def swap(unordered_list: list[int], index: int) -> list[int]:
     return unordered_list
 
 
-def handle_list_error(unordered_list):
+def handle_list_error(unordered_list: Any):
     """Raise type error if unordered list is not of type list"""
     if not isinstance(unordered_list, list):
         raise TypeError(f"Unordered list {unordered_list} must be of type list[int]")
 
 
-def handle_index_error(unordered_list, index):
+def handle_index_error(unordered_list: Any, index: Any):
     "Raise Error is index is not integer or out of bounds"
 
     if not isinstance(index, int):
@@ -181,7 +183,7 @@ def handle_index_error(unordered_list, index):
         raise IndexError(error_message)
 
 
-def handle_value_error(value):
+def handle_value_error(value: Any):
     """Raise error if value ist not of type int"""
     if not isinstance(value, int):
         raise TypeError(f"Element {value} must be of type int")
