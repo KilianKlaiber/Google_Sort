@@ -51,22 +51,25 @@ def recursive_reordering(unordered_list: list[int]) -> list[int]:
     largest_number_distance = last_index - largest_number_index
 
     if smallest_number_distance <= largest_number_distance:
+        # Move the smallest number to the start of the list
         for index in range(smallest_number_distance - 1, -1, -1):
             unordered_list = swap(unordered_list, index)
 
         if len(unordered_list) >= 2:
+            # Recursively order the remaining list without the first element
             return [unordered_list[0]] + recursive_reordering(unordered_list[1:])
         else:
             return unordered_list
 
     else:
+        # Move the largest number to the end of the list
         for index in range(largest_number_index, last_index):
             unordered_list = swap(unordered_list, index)
 
         if len(unordered_list) >= 2:
-            return recursive_reordering(unordered_list[:last_index]) + [
-                unordered_list[-1]
-            ]
+
+            # Recursively order the remaining list without the last
+            return recursive_reordering(unordered_list[:-1]) + [unordered_list[-1]]
         else:
             return unordered_list
 
@@ -112,7 +115,7 @@ def smallest_number(unordered_list: list[int]) -> int:
 
 def ordered(unordered_list: list[int], index: int) -> bool:
     """
-    Returns True, if adjacent numbers at index, index +1 are ordered, 
+    Returns True, if adjacent numbers at index, index +1 are ordered,
     else Return False.
     """
 
@@ -138,8 +141,7 @@ def ordered(unordered_list: list[int], index: int) -> bool:
 
 
 def swap(unordered_list: list[int], index: int) -> list[int]:
-    """Returns list of integers with elements at index and index+1 swapped
-    """
+    """Returns list of integers with elements at index and index+1 swapped"""
 
     # Error Handling
 
