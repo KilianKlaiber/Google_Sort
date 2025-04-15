@@ -111,10 +111,9 @@ def smallest_number(unordered_list: list[int]) -> int:
 
 
 def ordered(unordered_list: list[int], index: int) -> bool:
-    """Determine, whether adjacent numbers are ordered correctly
-
-    Returns:
-        bool: True, if adjacent numbers are ordered, else False.
+    """
+    Returns True, if adjacent numbers at index, index +1 are ordered, 
+    else Return False.
     """
 
     # Error Handling
@@ -139,10 +138,7 @@ def ordered(unordered_list: list[int], index: int) -> bool:
 
 
 def swap(unordered_list: list[int], index: int) -> list[int]:
-    """Swap adjacent Elements
-
-    Returns:
-        list[int]: list of integers with elements at index and index+1 swapped
+    """Returns list of integers with elements at index and index+1 swapped
     """
 
     # Error Handling
@@ -170,7 +166,7 @@ def handle_list_error(unordered_list: Any):
 
 
 def handle_index_error(unordered_list: Any, index: Any):
-    "Raise Error is index is not integer or out of bounds"
+    "Raise Error if index is not integer or out of bounds"
 
     if not isinstance(index, int):
         raise TypeError(f"The index {index} must be of type integer")
