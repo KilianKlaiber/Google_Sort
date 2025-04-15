@@ -103,10 +103,11 @@ def smallest_number(unordered_list: list[int]) -> int:
     smallest_number_index = 0
 
     for index, value in enumerate(unordered_list):
+        
         handle_value_error(value)
+        
         # < instead of <= in order to get the first index, if the smallest_number is not unique
         if value < smallest_number:
-
             smallest_number = value
             smallest_number_index = index
 
@@ -119,44 +120,32 @@ def ordered(unordered_list: list[int], index: int) -> bool:
     else Return False.
     """
 
-    # Error Handling
-
     handle_list_error(unordered_list)
     handle_index_error(unordered_list, index)
 
-    # Ordering adjacent values
-
-    first_index = index
-    first_value = unordered_list[first_index]
-    second_index = index + 1
-    second_value = unordered_list[second_index]
+    first_value = unordered_list[index]
+    second_value = unordered_list[index + 1]
 
     handle_value_error(first_value)
     handle_value_error(second_value)
 
-    if second_value >= first_value:
-        return True
-    else:
-        return False
+    return second_value >= first_value
 
 
 def swap(unordered_list: list[int], index: int) -> list[int]:
     """Returns list of integers with elements at index and index+1 swapped"""
 
-    # Error Handling
-
     handle_list_error(unordered_list)
     handle_index_error(unordered_list, index)
 
-    # Swapping adjacent values:
-
-    first_index = index
     first_value = unordered_list[index]
-    second_index = index + 1
-    second_value = unordered_list[second_index]
+    second_value = unordered_list[index + 1]
+    
+    handle_value_error(first_value)
+    handle_value_error(second_value)
 
-    unordered_list[first_index] = second_value
-    unordered_list[second_index] = first_value
+    unordered_list[index] = second_value
+    unordered_list[index + 1] = first_value
 
     return unordered_list
 
