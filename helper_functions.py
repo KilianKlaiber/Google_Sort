@@ -9,9 +9,9 @@ def get_largest_item_index(unordered_list: list[int]) -> int:
         return unordered_list[index]
         
     # range(len(unordered_list)-1, -1, -1) loops from the largest index
-    # to the smalles index of the unordered list
+    # to the smallest index of the unordered list
     # get_value returns the value for each index
-    # max returns the first index, which yields the smallest value.
+    # max returns the first index, which yields the largest value.
     largest_item_index = max(range(len(unordered_list)-1, -1, -1), key=get_value)
 
     return largest_item_index
@@ -26,7 +26,7 @@ def get_smallest_item_index(unordered_list: list[int]) -> int:
         return unordered_list[index]
         
     # range(len(unordered_list)) represents the indexes of the unordered list
-    # return_value returns the value for each index
+    # get_value returns the value for each index
     # min returns the index, which yields the smallest value.
     smallest_item_index = min(range(len(unordered_list)), key=get_value)
 
