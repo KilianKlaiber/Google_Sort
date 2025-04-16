@@ -1,7 +1,7 @@
 from error_handlers import handle_index_error, handle_list_error, handle_value_error
 
 
-def largest_number(unordered_list: list[int]) -> int:
+def get_largest_item_index(unordered_list: list[int]) -> int:
     """Return index of largest number in list"""
 
     handle_list_error(unordered_list)
@@ -21,7 +21,7 @@ def largest_number(unordered_list: list[int]) -> int:
     return largest_number_index
 
 
-def smallest_number(unordered_list: list[int]) -> int:
+def get_smallest_item_index(unordered_list: list[int]) -> int:
     """Return index of smallest number in list"""
 
     handle_list_error(unordered_list)
