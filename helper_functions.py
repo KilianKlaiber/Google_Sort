@@ -3,42 +3,34 @@ from error_handlers import handle_index_error, handle_list_error, handle_value_e
 
 def get_largest_item_index(unordered_list: list[int]) -> int:
     """Return index of largest number in list"""
-
     handle_list_error(unordered_list)
+    
+    def get_value(index: int) -> tuple:
+        return unordered_list[index]
+        
+    # range(len(unordered_list)-1, -1, -1) loops from the largest index
+    # to the smalles index of the unordered list
+    # get_value returns the value for each index
+    # max returns the first index, which yields the smallest value.
+    largest_item_index = max(range(len(unordered_list)-1, -1, -1), key=get_value)
 
-    largest_number = unordered_list[0]
-    largest_number_index = 0
-
-    for index, value in enumerate(unordered_list):
-
-        handle_value_error(value)
-
-        # >= instead of > in order to get the last index, if the largest_number is not unique
-        if value >= largest_number:
-            largest_number = value
-            largest_number_index = index
-
-    return largest_number_index
+    return largest_item_index
 
 
 def get_smallest_item_index(unordered_list: list[int]) -> int:
     """Return index of smallest number in list"""
-
+    
     handle_list_error(unordered_list)
+    
+    def return_value(index: int) -> int:
+        return unordered_list[index]
+        
+    # range(len(unordered_list)) represents the indexes of the unordered list
+    # return_value returns the value for each index
+    # min returns the index, which yields the smallest value.
+    smallest_item_index = min(range(len(unordered_list)), key=return_value)
 
-    smallest_number = unordered_list[0]
-    smallest_number_index = 0
-
-    for index, value in enumerate(unordered_list):
-
-        handle_value_error(value)
-
-        # < instead of <= in order to get the first index, if the smallest_number is not unique
-        if value < smallest_number:
-            smallest_number = value
-            smallest_number_index = index
-
-    return smallest_number_index
+    return smallest_item_index
 
 
 def ordered(unordered_list: list[int], index: int) -> bool:

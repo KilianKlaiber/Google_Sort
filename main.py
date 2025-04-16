@@ -24,8 +24,10 @@ def main():
     unordered_list = [2, 7, 3, 8, 7, 7, 5, 2, 1, 4, 5, 4, 3, 5, 6, 8]
 
     ordered_list = google_sort(unordered_list)
+    
+    print(f"ordered list: {ordered_list}")
 
-    print("ordered list: ", ordered_list)
+
 
 
 def google_sort(unordered_list: list[int]) -> list[int]:
