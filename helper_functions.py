@@ -22,13 +22,13 @@ def get_smallest_item_index(unordered_list: list[int]) -> int:
     
     handle_list_error(unordered_list)
     
-    def return_value(index: int) -> int:
+    def get_value(index: int) -> int:
         return unordered_list[index]
         
     # range(len(unordered_list)) represents the indexes of the unordered list
     # return_value returns the value for each index
     # min returns the index, which yields the smallest value.
-    smallest_item_index = min(range(len(unordered_list)), key=return_value)
+    smallest_item_index = min(range(len(unordered_list)), key=get_value)
 
     return smallest_item_index
 
@@ -62,9 +62,12 @@ def swap(unordered_list: list[int], index: int) -> list[int]:
 
     handle_value_error(first_value)
     handle_value_error(second_value)
+    
+    # Create a copy of the list
+    swapped_list = unordered_list[:]
 
-    unordered_list[index] = second_value
-    unordered_list[index + 1] = first_value
+    swapped_list[index] = second_value
+    swapped_list[index + 1] = first_value
 
-    return unordered_list
+    return swapped_list
 
